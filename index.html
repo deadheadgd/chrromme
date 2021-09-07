@@ -20,3 +20,251 @@ SOFTWARE.
 Special thanks to David King, Hennie Rozengarden, Jeroen Van Antwerpen,
 Cor Koomen and other TC/RS Chromies in refining this tool.
 -->
+<html lang="en">
+<head>
+<title>Chrome Bookmarks Recovery Tool</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0">
+<meta name="description" content="Tool to recover your lost Chrome bookmarks">
+<link rel="canonical" href="https://rongjiecomputer.github.io/chrome/bookmark-recovery/">
+<link rel="alternate" hreflang="en" href="https://rongjiecomputer.github.io/chrome/bookmark-recovery/">
+<link rel="alternate" hreflang="es" href="https://rongjiecomputer.github.io/chrome/bookmark-recovery/index.es.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chrome Bookmarks Recovery Tool">
+<meta property="og:url" content="https://rongjiecomputer.github.io/chrome/bookmark-recovery/">
+<meta property="og:site_name" content="rongjiecomputer.github.io">
+<meta property="og:description" content="Tool to recover your lost Chrome bookmarks">
+<meta property="og:image" content="https://rongjiecomputer.github.io/chrome/bookmark-recovery/share.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chrome Bookmarks Recovery Tool">
+<meta name="twitter:url" content="https://rongjiecomputer.github.io/chrome/bookmark-recovery/">
+<meta name="twitter:description" content="Tool to recover your lost Chrome bookmarks">
+<meta name="twitter:image" content="https://rongjiecomputer.github.io/chrome/bookmark-recovery/share.png">
+<style>
+html, body {
+	font-family: "Helvetica", Arial, sans-serif;
+	font-size: 14px;
+	background-color: #fff;
+	margin: 0;
+	padding: 0;
+}
+header {
+	background-color: #f5f5f5;
+	padding: 10px 30px 10px 30px;
+	border-bottom: 1px solid #e5e5e5;
+}
+h1 {
+	font-size: 32px;
+	font-weight: 400;
+}
+a {
+	color: #4285f4;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.github-link {
+	display: block;
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	top: 0;
+	right: 0;
+	z-index: 100;
+}
+main {
+	padding: 30px;
+}
+p, li {
+	line-height: 1.5em;
+	word-break: break-word;
+}
+#tabs {
+	height: 48px;
+	margin-bottom: 32px;
+	padding: 0;
+	overflow: hidden;
+	border-bottom: 1px solid #e0e0e0;
+}
+#tabs a {
+	display: inline-block;
+	float: left;
+	color: #9e9e9e;
+	font-weight: 500;
+	line-height: 47px;
+	text-transform: uppercase;
+	padding: 0 10px;
+	text-decoration: none;
+}
+#tabs .active {
+	color: #4285f4;
+	border-bottom: 2px solid #4285f4;
+}
+.soln {
+	display: none;
+}
+.show {
+	display: block;
+}
+code {
+	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	background-color: #f7f7f7;
+}
+#block {
+	max-width: 650px;
+	margin-bottom: 30px;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+#drop_zone {
+	border: 2px dashed #bbb;
+	border-radius: 5px;
+	padding: 25px;
+	text-align: center;
+	color: #bbb;
+}
+.is_dragover {
+	border: 4px dashed #4386fa !important;
+	color: #4386fa !important;
+}
+.is_dragover svg {
+	fill: #4386fa;
+}
+label {
+	position: relative;
+}
+label b {
+	color: #000;
+}
+label:hover b {
+	color: #4386fa;
+}
+input[type="file"] {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+}
+#tooltip {
+	display: none;
+}
+#drop_zone svg, #drop_zone span {
+	display: block;
+	margin: auto;
+}
+output {
+	display: block;
+	padding: 25px;
+	text-align: center;
+}
+output b {
+	color: red;
+}
+output ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	text-align: left;
+}
+output a {
+	color: #555;
+	text-decoration: underline;
+}
+output a[data-disabled] {
+ 	color: #ccc;
+ 	text-decoration: line-through;
+}
+.zip {
+	border-top: 1px solid #e0e0e0;
+}
+.zip-h {
+	display: block;
+	background-color: #fff;
+	color: #4285f4;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 16px 50px 12px 16px;
+	margin: 0;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	border: 0;
+	text-align: left;
+}
+.zip-h:hover {
+	text-decoration: none;
+}
+.zip-h:before {
+	background: no-repeat url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%234285f4' d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z'/%3E%3C/svg%3E");
+	background-size: 24px;
+	content: '';
+	margin-top: -12px;
+	position: absolute;
+	right: 18px;
+	top: 50%;
+	width: 22px;
+	height: 22px;
+	transition: transform 0.3s;
+}
+.zip-content {
+	display: none;
+	margin-left: 18px;
+	padding: 1px 26px 19px 16px;
+	position: relative;
+}
+.zip-content:before {
+	background-color: #e0e0e0;
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 100%;
+	left: 0;
+	top: -19px;
+}
+.unzip .zip-h:before {
+	transform: rotate(-180deg);
+}
+.unzip .zip-content {
+	display: block;
+}
+footer {
+	background-color: #f5f5f5;
+	border-top: 1px solid #e5e5e5;
+}
+footer a {
+	display: inline-block;
+	padding: 20px 14px;
+	color: #999;
+}
+</style>
+</head>
+<body>
+
+<header>
+	<h1>Chrome Bookmarks Recovery Tool</h1>
+</header>
+
+<main>
+	<div id="tabs" role="tablist" aria-label="Instructions">
+		<a href="#windows" id="windows-tab" role="tab" aria-controls="windows-soln">Windows</a>
+		<a href="#mac" id="mac-tab" role="tab" aria-controls="mac-soln">Mac</a>
+		<a href="#linux" id="linux-tab" role="tab" aria-controls="linux-soln">Linux</a>
+		<a href="#google" id="google-tab" role="tab" aria-controls="google-soln">Google Server</a>
+	</div>
+	<div class="soln" id="windows-soln" role="tabpanel" aria-labelledby="windows-tab" aria-hidden="true" tabindex="0">
+		<p>Here is how to recover your lost bookmarks (Windows):</p>
+		<ol>
+			<li>Copy <code>C:\Users\%username%\AppData\Local\Google\Chrome\User Data</code> into File Explorer.</li>
+			<li>In search bar, type <code>Bookmarks</code>, you will see a list of files named <code>Bookmarks</code> and/or <code>Bookmarks.bak</code>. (<i>Note: If there is more than one user using the same Chrome, bookmarks from other users will be listed too</i>)</li>
+			<li>Select all the files with mouse and drag them to the block below.</li>
+			<li>Download all the HTML files.</li>
+			<li>Open each HTML file with Chrome and determine the HTML file that contains your bookmarks. (<i>Note: The largest file is most likely the correct one</i>)</li>
+			<li>In your Chrome browser, click the Chrome menu icon and go to Bookmarks &gt; Bookmark Manager.</li>
+			<li>Click the menu icon beside search bar and click "Import Bookmarks".</li>
+			<li>Select the HTML file that contains your bookmarks.</li>
+			<li>Your bookmarks should now be imported back to Chrome.</li>
+		</ol>
