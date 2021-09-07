@@ -259,5 +259,37 @@ footer a {
 			<li>Your bookmarks should now be imported back to Chrome.</li>
 		</ol>
 		</div>
+	<form id="block" tabindex="-1">
+		<div id="drop_zone">
+			<svg aria-hidden="true" fill="#bbb" width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+			</svg>
+			<label>
+				<input tabindex="0" type="file" multiple id="input" aria-describedby="tooltip"/>
+				<b>Choose a file</b> or drag it here
+			</label>
+			<div role="tooltip" id="tooltip">Search with the keyword of "Bookmarks" and select all the files found.</div>
+		</div>
+		<output id="output" role="alert" aria-live="assertive" aria-hidden="true">The HTML file will be produced here later.</output>
+	</form>
+	<h3>Other ways to recover bookmarks</h3>
+	<div class="zip">
+		<button id="zip-h-2" class="zip-h" aria-expanded="false" aria-controls="zip-2">Personal backup</button>
+		<div id="zip-2" role="region" aria-labelledby="zip-h-2" aria-hidden="true" class="zip-content">
+			<p>In the case when backups of your computer are available, find the bookmarks files in the backups, upload them to this tool and continue with the steps above.</p>
+		</div>
+	</div>
+	<div class="zip">
+		<button id="zip-h-3" class="zip-h" aria-expanded="false" aria-controls="zip-3">Recover from old devices</button>
+		<div id="zip-3" role="region" aria-labelledby="zip-h-3" aria-hidden="true" class="zip-content">
+			<p>Do you have a device (e.g: old laptop) that is signed in to your Google Account and it hasn't been synced since the moment your bookmarks were lost? If so, find the files in this device, upload them to this tool and continue with the steps above.</p>
+		</div>
+	</div>
+	<div class="zip">
+		<button id="zip-h-4" class="zip-h" aria-expanded="false" aria-controls="zip-4">Tips and tricks</button>
+		<div id="zip-4" role="region" aria-labelledby="zip-h-4" aria-hidden="true" class="zip-content">
+			<p>You can use this tool or <i>Export Bookmarks</i> function in Bookmark Manager to generate HTML file that can be used as archive/backup of your bookmarks. Regularly making backup is useful in case your bookmarks get lost again in the future.</p>
+		</div>
+	</div>
 	<p><i>Disclaimer: this is not an official Google product.</i></p>
 </main>
